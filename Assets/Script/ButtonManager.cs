@@ -6,10 +6,12 @@ using UnityEngine.UI;
 
 public class ButtonManager : MonoBehaviour
 {
+    public GameObject blueMan;
+    public GameObject redMan;
 
     public void BlueActive()
     {
-
+ 
     }
 
 
