@@ -11,6 +11,7 @@ public class BluePlayerManager : MonoBehaviour
     [SerializeField] private float _moveYspeed;
     [SerializeField] private float _jumpForce;
     [SerializeField] private Animator _anim;
+    [SerializeField] private Transform _blueSpawnPos;
 
 
     public float _gravityValue = 35f;
@@ -62,7 +63,7 @@ public class BluePlayerManager : MonoBehaviour
 
         if (other.tag == "dieLine")
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            transform.position = _blueSpawnPos.position;
         }
     }
     private void OnTriggerExit(Collider other)

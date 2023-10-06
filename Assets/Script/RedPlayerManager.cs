@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class RedPlayerManager : MonoBehaviour
 {
@@ -11,6 +7,8 @@ public class RedPlayerManager : MonoBehaviour
     [SerializeField] private float _moveXspeed;
     [SerializeField] private float _jumpForce;
     [SerializeField] private Animator _anim;
+    [SerializeField] private Transform _redSpawnPos;
+
 
     public static bool _redReached;
     public bool jumpAble;
@@ -54,9 +52,10 @@ public class RedPlayerManager : MonoBehaviour
         }
         if (other.tag == "dieLine")
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            transform.position = _redSpawnPos.position;
         }
     }
+    #region OnTrigger'lar ve OnCollision'lar
     private void OnTriggerExit(Collider other)
     {
         if (other.tag == "redF")
@@ -74,6 +73,7 @@ public class RedPlayerManager : MonoBehaviour
             _anim.SetBool("isIdle", true);
         }
     }
+    #endregion
     public void Jump()
     {
         if (jumpAble)
