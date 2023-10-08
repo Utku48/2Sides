@@ -6,8 +6,10 @@ public class RedPlayerManager : MonoBehaviour
     [SerializeField] private float _moveX;
     [SerializeField] private float _moveXspeed;
     [SerializeField] private float _jumpForce;
-    [SerializeField] private Animator _anim;
+    public Animator _anim;
     [SerializeField] private Transform _redSpawnPos;
+
+    [SerializeField] private GameObject Obstacle;
 
 
     public static bool _redReached;
@@ -30,20 +32,26 @@ public class RedPlayerManager : MonoBehaviour
         _moveX = -1;
         transform.rotation = Quaternion.Euler(0, 270, 0);
         _anim.SetBool("isRun", true);
+        _anim.SetBool("isIdle", false);
+
     }
     public void RightMove()
     {
         _moveX = 1;
         transform.rotation = Quaternion.Euler(0, 90, 0);
         _anim.SetBool("isRun", true);
+        _anim.SetBool("isIdle", false);
+
     }
     public void Stop()
     {
         _moveX = 0;
         _anim.SetBool("isRun", false);
         _anim.SetBool("isIdle", true);
+
     }
     #endregion
+    #region OnTrigger'lar ve OnCollision'lar
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "redF")
@@ -54,8 +62,15 @@ public class RedPlayerManager : MonoBehaviour
         {
             transform.position = _redSpawnPos.position;
         }
+
+        if (other.tag == "Obstacle" && Vector3.Distance(this.gameObject.transform.position, Obstacle.transform.position) <= 0.45)
+        {
+            Debug.Log(Vector3.Distance(this.gameObject.transform.position, Obstacle.transform.position));
+            _anim.SetBool("Obstacle", true);
+        }
+
+
     }
-    #region OnTrigger'lar ve OnCollision'lar
     private void OnTriggerExit(Collider other)
     {
         if (other.tag == "redF")
@@ -63,22 +78,29 @@ public class RedPlayerManager : MonoBehaviour
             _redReached = false;
 
         }
+        if (other.tag == "Obstacle" && Vector3.Distance(this.gameObject.transform.position, Obstacle.transform.position) > 0.45)
+        {
+            Debug.Log(Vector3.Distance(this.gameObject.transform.position, Obstacle.transform.position));
+            _anim.SetBool("Obstacle", false);
+        }
+
+
     }
     private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.CompareTag("ground"))
         {
-            jumpAble = true;
-            _anim.SetBool("isJump", false);
             _anim.SetBool("isIdle", true);
         }
+
     }
     #endregion
     public void Jump()
     {
         if (jumpAble)
         {
-            _anim.SetBool("isJump", true);
+            _anim.SetTrigger("Jump");
+
             _rb.velocity = new Vector3(_rb.velocity.x, _jumpForce, _rb.velocity.z);
             jumpAble = false;
         }

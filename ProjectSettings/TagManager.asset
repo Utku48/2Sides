@@ -8,6 +8,9 @@ TagManager:
   - blueF
   - redF
   - dieLine
+  - RedMan
+  - BlueMan
+  - Obstacle
   layers:
   - Default
   - TransparentFX

@@ -79,26 +79,19 @@ public class BluePlayerManager : MonoBehaviour
     {
         if (other.gameObject.CompareTag("ground"))
         {
-            jumpAble = true;
-            _anim.SetBool("isJump", false);
             _anim.SetBool("isIdle", true);
         }
     }
 
-    private void OnCollisionExit(Collision other)
-    {
-        if (other.gameObject.CompareTag("ground"))
-        {
-            jumpAble = false;
-        }
-    }
+
     #endregion
 
     public void Jump()
     {
         if (jumpAble)
         {
-            _anim.SetBool("isJump", true);
+            _anim.SetTrigger("Jump");
+
             _rb.velocity = new Vector3(_jumpForce, _rb.velocity.y, _rb.velocity.z);
             jumpAble = false;
         }
