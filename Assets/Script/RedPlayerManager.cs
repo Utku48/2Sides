@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 
 public class RedPlayerManager : MonoBehaviour
@@ -6,10 +7,14 @@ public class RedPlayerManager : MonoBehaviour
     [SerializeField] private float _moveX;
     [SerializeField] private float _moveXspeed;
     [SerializeField] private float _jumpForce;
-    public Animator _anim;
-    [SerializeField] private Transform _redSpawnPos;
+    [SerializeField] private Animator _anim;
+    [SerializeField] private Vector3 _redSpawnPos;
+    [SerializeField] private GameObject redFlag;
+    [SerializeField] private Transform[] topDownRedFlag;
+    public ParticleSystem[] _particiles;
 
-    [SerializeField] private GameObject Obstacle;
+
+    public static bool isMoving = false;
 
 
     public static bool _redReached;
@@ -17,6 +22,7 @@ public class RedPlayerManager : MonoBehaviour
 
     void Start()
     {
+        _redSpawnPos = gameObject.transform.position;
         _rb = GetComponent<Rigidbody>();
         _anim = GetComponent<Animator>();
     }
@@ -29,6 +35,8 @@ public class RedPlayerManager : MonoBehaviour
     #region Left Right Move
     public void LeftMove()
     {
+
+        isMoving = true;
         _moveX = -1;
         transform.rotation = Quaternion.Euler(0, 270, 0);
         _anim.SetBool("isRun", true);
@@ -37,7 +45,10 @@ public class RedPlayerManager : MonoBehaviour
     }
     public void RightMove()
     {
+
+        isMoving = true;
         _moveX = 1;
+        transform.rotation = Quaternion.Euler(0, 90, 0);
         transform.rotation = Quaternion.Euler(0, 90, 0);
         _anim.SetBool("isRun", true);
         _anim.SetBool("isIdle", false);
@@ -45,6 +56,7 @@ public class RedPlayerManager : MonoBehaviour
     }
     public void Stop()
     {
+        isMoving = false;
         _moveX = 0;
         _anim.SetBool("isRun", false);
         _anim.SetBool("isIdle", true);
@@ -56,34 +68,31 @@ public class RedPlayerManager : MonoBehaviour
     {
         if (other.tag == "redF")
         {
+            LevelManager.reachValue++;
             _redReached = true;
+            if (_redReached)
+            {
+                redFlag.transform.DOMove(topDownRedFlag[0].position, 3f);
+            }
         }
         if (other.tag == "dieLine")
         {
-            transform.position = _redSpawnPos.position;
+
+            transform.position = _redSpawnPos;
         }
-
-        if (other.tag == "Obstacle" && Vector3.Distance(this.gameObject.transform.position, Obstacle.transform.position) <= 0.45)
-        {
-            Debug.Log(Vector3.Distance(this.gameObject.transform.position, Obstacle.transform.position));
-            _anim.SetBool("Obstacle", true);
-        }
-
-
     }
     private void OnTriggerExit(Collider other)
     {
         if (other.tag == "redF")
         {
+            LevelManager.reachValue--;
             _redReached = false;
 
+            if (!_redReached)
+            {
+                redFlag.transform.DOMove(topDownRedFlag[1].position, 3f);
+            }
         }
-        if (other.tag == "Obstacle" && Vector3.Distance(this.gameObject.transform.position, Obstacle.transform.position) > 0.45)
-        {
-            Debug.Log(Vector3.Distance(this.gameObject.transform.position, Obstacle.transform.position));
-            _anim.SetBool("Obstacle", false);
-        }
-
 
     }
     private void OnCollisionEnter(Collision other)
@@ -100,6 +109,7 @@ public class RedPlayerManager : MonoBehaviour
         if (jumpAble)
         {
             _anim.SetTrigger("Jump");
+            _particiles[0].Play();
 
             _rb.velocity = new Vector3(_rb.velocity.x, _jumpForce, _rb.velocity.z);
             jumpAble = false;

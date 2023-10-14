@@ -25,6 +25,23 @@ public class JumpCheck : MonoBehaviour
 
     }
 
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "ground" || other.gameObject.GetComponent<BluePlayerManager>() || other.gameObject.GetComponent<RedPlayerManager>())
+        {
+            if (_character.TryGetComponent<BluePlayerManager>(out BluePlayerManager blue))
+            {
+
+                blue.jumpAble = false;
+            }
+            else if (_character.TryGetComponent<RedPlayerManager>(out RedPlayerManager red))
+            {
+                red.jumpAble = false;
+
+            }
+        }
+    }
+
 
 
 }

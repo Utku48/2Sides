@@ -11,6 +11,7 @@ TagManager:
   - RedMan
   - BlueMan
   - Obstacle
+  - pushControl
   layers:
   - Default
   - TransparentFX
