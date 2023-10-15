@@ -28,7 +28,6 @@ public class RedPlayerManager : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        //_rb.AddForce(new Vector3(0, -2f, 0), ForceMode.Force);
         _rb.velocity = new Vector3(_moveX * _moveXspeed * Time.deltaTime, _rb.velocity.y, _rb.velocity.z);
 
     }
@@ -68,7 +67,7 @@ public class RedPlayerManager : MonoBehaviour
     {
         if (other.tag == "redF")
         {
-            LevelManager.reachValue++;
+            _particiles[1].Play();
             _redReached = true;
             if (_redReached)
             {
@@ -77,16 +76,20 @@ public class RedPlayerManager : MonoBehaviour
         }
         if (other.tag == "dieLine")
         {
-
             transform.position = _redSpawnPos;
+            LevelManager.pastTime = 0;
+
+
         }
     }
+
+
     private void OnTriggerExit(Collider other)
     {
         if (other.tag == "redF")
         {
-            LevelManager.reachValue--;
             _redReached = false;
+            LevelManager.pastTime = 0;
 
             if (!_redReached)
             {
@@ -108,9 +111,8 @@ public class RedPlayerManager : MonoBehaviour
     {
         if (jumpAble)
         {
-            _anim.SetTrigger("Jump");
             _particiles[0].Play();
-
+            _anim.SetTrigger("Jump");
             _rb.velocity = new Vector3(_rb.velocity.x, _jumpForce, _rb.velocity.z);
             jumpAble = false;
         }

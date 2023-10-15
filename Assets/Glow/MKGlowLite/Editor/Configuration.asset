@@ -13,20 +13,29 @@ MonoBehaviour:
   m_Name: Configuration
   m_EditorClassIdentifier: 
   _renderPipeline: 1
-  showInstallerOnReload: 1
+  showInstallerOnReload: 0
   _titleImage: {fileID: 2800000, guid: d5d23c6d235b56241bd8c3d6a38d6468, type: 3}
   _readMe: {fileID: 102900000, guid: bd0778be5cb6c2b4cb491f5da4150248, type: 3}
-  _basePackageBuiltin: {fileID: 102900000, guid: a381ddd29b564604fac9cba0f149d3a3, type: 3}
+  _basePackageBuiltin: {fileID: 102900000, guid: a381ddd29b564604fac9cba0f149d3a3,
+    type: 3}
   _basePackageLWRP: {fileID: 102900000, guid: 46988a29e8b11cc4e9466e1ed23406b1, type: 3}
   _basePackageURP: {fileID: 102900000, guid: 4027d28df3200e843802f57f34e8df22, type: 3}
-  _examplesPackageInc: {fileID: 102900000, guid: 26ca26e60b25ab342bae8e067b5afd47, type: 3}
-  _examplesPackageBuiltin: {fileID: 102900000, guid: 16ef95a9d6a4d134cb7dc19cfc3784fc, type: 3}
-  _examplesPackageLWRP: {fileID: 102900000, guid: 0e15a1b8e3ab1cc4f90852e020316c5f, type: 3}
-  _examplesPackageURP: {fileID: 102900000, guid: 8379d72afb9b8044dbc9e58584462183, type: 3}
-  _examplesPackageURP_2020_3_and_newer: {fileID: 102900000, guid: f7d2d4748fce0914d8edd3f65284c3c3, type: 3}
-  _examplesPackageURP_2023_2_and_newer: {fileID: 102900000, guid: 3249942564d0d1849927a236dd5bfd93, type: 3}
-  _examplesPackageURP2D: {fileID: 102900000, guid: 59bfbab1fefb55c449ada3726ae2938b, type: 3}
-  _examplesPackageURP2D_2023_2_and_newer: {fileID: 102900000, guid: bba5d5f8f04bf4a4f8cf2eb898885b89, type: 3}
+  _examplesPackageInc: {fileID: 102900000, guid: 26ca26e60b25ab342bae8e067b5afd47,
+    type: 3}
+  _examplesPackageBuiltin: {fileID: 102900000, guid: 16ef95a9d6a4d134cb7dc19cfc3784fc,
+    type: 3}
+  _examplesPackageLWRP: {fileID: 102900000, guid: 0e15a1b8e3ab1cc4f90852e020316c5f,
+    type: 3}
+  _examplesPackageURP: {fileID: 102900000, guid: 8379d72afb9b8044dbc9e58584462183,
+    type: 3}
+  _examplesPackageURP_2020_3_and_newer: {fileID: 102900000, guid: f7d2d4748fce0914d8edd3f65284c3c3,
+    type: 3}
+  _examplesPackageURP_2023_2_and_newer: {fileID: 102900000, guid: 3249942564d0d1849927a236dd5bfd93,
+    type: 3}
+  _examplesPackageURP2D: {fileID: 102900000, guid: 59bfbab1fefb55c449ada3726ae2938b,
+    type: 3}
+  _examplesPackageURP2D_2023_2_and_newer: {fileID: 102900000, guid: bba5d5f8f04bf4a4f8cf2eb898885b89,
+    type: 3}
   _examples:
   - name: Cubes
     scene: {fileID: 102900000, guid: c6fbeefcf54dee042b5e468c5da59d9f, type: 3}

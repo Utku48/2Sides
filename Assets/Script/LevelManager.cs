@@ -5,28 +5,27 @@ using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour
 {
     private static int nextSceneIndex = 0; // Başlangıçta bir sonraki seviyenin index değeri
-    public static int reachValue = 0;
+    public static float pastTime = 0;
     public void Update()
     {
-        if (reachValue == 2)
+        if (RedPlayerManager._redReached && BluePlayerManager._blueReached)
         {
-            StartCoroutine(LoadNextLevelWithDelay());
+            pastTime += Time.deltaTime;
+
+            if (pastTime >= 4f)
+            {
+
+                nextSceneIndex++;
+                SceneManager.LoadScene(nextSceneIndex);
+
+                BluePlayerManager._blueReached = false;
+                RedPlayerManager._redReached = false;
+                pastTime = 0;
+            }
+
         }
-        Debug.Log(reachValue);
-    }
 
-    IEnumerator LoadNextLevelWithDelay()
-    {
-        yield return new WaitForSeconds(3.5f);
-
-
-        nextSceneIndex++;
-
-
-        SceneManager.LoadScene(nextSceneIndex);
-
-
-        BluePlayerManager._blueReached = false;
-        RedPlayerManager._redReached = false;
     }
 }
+
+

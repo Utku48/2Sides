@@ -1,24 +1,29 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 public class JumpPad : MonoBehaviour
 {
-    public float jumpForce = 10f; // Zıplama kuvveti
+    [SerializeField] private Animator _anim;
+    public float jumpForce = 10f;
+    public ParticleSystem _flipParticule;
 
     private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.GetComponent<RedPlayerManager>() || other.gameObject.GetComponent<BluePlayerManager>()) // Karakter nesnesi jump pad'in üzerine geldiğinde
         {
-            Debug.Log("Jumppad");
+            _anim = other.gameObject.GetComponent<Animator>();
             Rigidbody rb = other.gameObject.GetComponent<Rigidbody>();
+
             if (rb != null)
             {
-                // Karakteri yukarı doğru zıplat
+
+                _anim.SetBool("Flip", true);
                 rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                _flipParticule.Play();
             }
         }
     }
+
+
 }

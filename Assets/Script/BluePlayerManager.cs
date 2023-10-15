@@ -67,7 +67,7 @@ public class BluePlayerManager : MonoBehaviour
     {
         if (other.tag == "blueF")
         {
-            LevelManager.reachValue++;
+
             _blueReached = true;
             if (_blueReached)
             {
@@ -78,14 +78,15 @@ public class BluePlayerManager : MonoBehaviour
         if (other.tag == "dieLine")
         {
             transform.position = _blueSpawnPos;
+            LevelManager.pastTime = 0;
         }
     }
     private void OnTriggerExit(Collider other)
     {
         if (other.tag == "blueF")
         {
-            LevelManager.reachValue--;
             _blueReached = false;
+            LevelManager.pastTime = 0;
 
             if (!_blueReached)
             {
