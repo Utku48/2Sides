@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System.Data;
 using UnityEngine;
 
 public class RedPlayerManager : MonoBehaviour
@@ -13,6 +14,7 @@ public class RedPlayerManager : MonoBehaviour
     [SerializeField] private Transform[] topDownRedFlag;
     public ParticleSystem[] _particiles;
 
+    public static int a = 0;
 
     public static bool isMoving = false;
 
@@ -52,6 +54,7 @@ public class RedPlayerManager : MonoBehaviour
         _anim.SetBool("isRun", true);
         _anim.SetBool("isIdle", false);
 
+
     }
     public void Stop()
     {
@@ -60,6 +63,7 @@ public class RedPlayerManager : MonoBehaviour
         _anim.SetBool("isRun", false);
         _anim.SetBool("isIdle", true);
 
+
     }
     #endregion
     #region OnTrigger'lar ve OnCollision'lar
@@ -67,7 +71,11 @@ public class RedPlayerManager : MonoBehaviour
     {
         if (other.tag == "redF")
         {
-            _particiles[1].Play();
+            a++;
+            if (a == 1)
+            {
+                _particiles[1].Play();
+            }
             _redReached = true;
             if (_redReached)
             {
@@ -76,9 +84,9 @@ public class RedPlayerManager : MonoBehaviour
         }
         if (other.tag == "dieLine")
         {
+            _particiles[2].Play();
             transform.position = _redSpawnPos;
             LevelManager.pastTime = 0;
-
 
         }
     }

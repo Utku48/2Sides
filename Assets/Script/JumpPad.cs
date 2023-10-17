@@ -17,7 +17,6 @@ public class JumpPad : MonoBehaviour
 
             if (rb != null)
             {
-
                 _anim.SetBool("Flip", true);
                 rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
                 _flipParticule.Play();

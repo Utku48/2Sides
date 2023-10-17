@@ -21,6 +21,8 @@ public class LevelManager : MonoBehaviour
                 BluePlayerManager._blueReached = false;
                 RedPlayerManager._redReached = false;
                 pastTime = 0;
+                RedPlayerManager.a = 0;
+                BluePlayerManager.b = 0;
             }
 
         }

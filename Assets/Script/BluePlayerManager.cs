@@ -17,6 +17,8 @@ public class BluePlayerManager : MonoBehaviour
     [SerializeField] private Transform[] topDownBlueFlag;
     [SerializeField] private ParticleSystem[] _particiles;
 
+   public static int b = 0;
+
     public static bool isMoving = false;
     public float _gravityValue = 35f;
 
@@ -67,7 +69,11 @@ public class BluePlayerManager : MonoBehaviour
     {
         if (other.tag == "blueF")
         {
-
+            b++;
+            if (b == 1)
+            {
+                _particiles[2].Play();
+            }
             _blueReached = true;
             if (_blueReached)
             {
@@ -79,6 +85,7 @@ public class BluePlayerManager : MonoBehaviour
         {
             transform.position = _blueSpawnPos;
             LevelManager.pastTime = 0;
+            _particiles[1].Play();
         }
     }
     private void OnTriggerExit(Collider other)

@@ -22,10 +22,6 @@ public class PushController : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        Debug.Log(RedPlayerManager.isMoving);
-    }
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("pushControl"))
