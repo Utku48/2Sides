@@ -12,7 +12,8 @@ public class LevelManager : MonoBehaviour
         {
             pastTime += Time.deltaTime;
 
-            if (pastTime >= 4f)
+            Debug.Log(pastTime);
+            if (pastTime >= 2f)
             {
 
                 nextSceneIndex++;

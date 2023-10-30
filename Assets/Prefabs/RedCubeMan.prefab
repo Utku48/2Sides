@@ -605,7 +605,6 @@ GameObject:
   - component: {fileID: 2306515794037914885}
   - component: {fileID: 3119221340742444987}
   - component: {fileID: 3119221340742444984}
-  - component: {fileID: 3119221340742444985}
   - component: {fileID: 3119221340742444990}
   m_Layer: 0
   m_Name: RedCubeMan
@@ -671,19 +670,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 120
   m_CollisionDetection: 0
---- !u!65 &3119221340742444985
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3119221340742444991}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.22811596, y: 0.29829633, z: 0.22777383}
-  m_Center: {x: 0.00058963086, y: 0.15852503, z: -0.016076067}
 --- !u!114 &3119221340742444990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -701,7 +687,6 @@ MonoBehaviour:
   _moveXspeed: 60
   _jumpForce: 6
   _anim: {fileID: 3119221340742444987}
-  _redSpawnPos: {x: 0, y: 0, z: 0}
   redFlag: {fileID: 0}
   topDownRedFlag:
   - {fileID: 0}
@@ -710,6 +695,7 @@ MonoBehaviour:
   - {fileID: 2615214198641316823}
   - {fileID: 0}
   - {fileID: 2615214198246071767}
+  _redSpawnPos: {x: 0, y: 0, z: 0}
   jumpAble: 0
 --- !u!1 &3616871500354205269
 GameObject:

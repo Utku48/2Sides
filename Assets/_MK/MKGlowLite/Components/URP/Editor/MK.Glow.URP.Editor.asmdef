@@ -1,0 +1,21 @@
+{
+    "name": "MK.Glow.URP.Editor",
+    "references": [
+        "GUID:c579267770062bf448e75eb160330b7f",
+        "GUID:262271587a0eec8499eca2ca5a148d69",
+        "GUID:3eae0364be2026648bf74846acb8a731",
+        "GUID:df380645f10b7bc4b97d4f5eb6303d95",
+        "GUID:c10d564ea119ecf4e99ad2cce71eec1e"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

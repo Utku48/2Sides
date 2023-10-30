@@ -9,11 +9,11 @@ public class RedPlayerManager : MonoBehaviour
     [SerializeField] private float _moveXspeed;
     [SerializeField] private float _jumpForce;
     [SerializeField] private Animator _anim;
-    [SerializeField] private Vector3 _redSpawnPos;
     [SerializeField] private GameObject redFlag;
     [SerializeField] private Transform[] topDownRedFlag;
     public ParticleSystem[] _particiles;
 
+    public Vector3 _redSpawnPos;
     public static int a = 0;
 
     public static bool isMoving = false;
@@ -71,24 +71,24 @@ public class RedPlayerManager : MonoBehaviour
     {
         if (other.tag == "redF")
         {
+            _redReached = true;
             a++;
             if (a == 1)
             {
                 _particiles[1].Play();
             }
-            _redReached = true;
-            if (_redReached)
-            {
-                redFlag.transform.DOMove(topDownRedFlag[0].position, 3f);
-            }
+
+
         }
         if (other.tag == "dieLine")
         {
             _particiles[2].Play();
             transform.position = _redSpawnPos;
             LevelManager.pastTime = 0;
-
+            a = 0;
         }
+
+
     }
 
 

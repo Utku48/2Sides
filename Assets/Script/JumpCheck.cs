@@ -4,40 +4,49 @@ using UnityEngine;
 
 public class JumpCheck : MonoBehaviour
 {
-    [SerializeField] GameObject _character;
-
+    [SerializeField] private GameObject _character;
+    RaycastHit hit;
+    [SerializeField] private LayerMask _groundLayer;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "ground" || other.gameObject.GetComponent<BluePlayerManager>() || other.gameObject.GetComponent<RedPlayerManager>())
+        if (other.CompareTag("ground") || other.GetComponent<BluePlayerManager>() || other.GetComponent<RedPlayerManager>())
         {
-            if (_character.TryGetComponent<BluePlayerManager>(out BluePlayerManager blue))
-            {
+            BluePlayerManager blue = _character.GetComponent<BluePlayerManager>();
+            RedPlayerManager red = _character.GetComponent<RedPlayerManager>();
 
+            if (blue != null)
+            {
                 blue.jumpAble = true;
             }
-            else if (_character.TryGetComponent<RedPlayerManager>(out RedPlayerManager red))
+            else if (red != null)
             {
                 red.jumpAble = true;
-
             }
         }
-
     }
+
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "ground" || other.gameObject.GetComponent<BluePlayerManager>() || other.gameObject.GetComponent<RedPlayerManager>())
+        if (other.CompareTag("ground") || other.GetComponent<BluePlayerManager>() || other.GetComponent<RedPlayerManager>())
         {
-            if (_character.TryGetComponent<BluePlayerManager>(out BluePlayerManager blue))
+            if (Physics.Raycast(this.transform.position + transform.up, -transform.up, out hit, 2f, _groundLayer))
             {
+                Debug.Log(hit.collider.name);
+                return;
+            }
 
+            BluePlayerManager blue = _character.GetComponent<BluePlayerManager>();
+            RedPlayerManager red = _character.GetComponent<RedPlayerManager>();
+
+            if (blue != null)
+            {
                 blue.jumpAble = false;
             }
-            else if (_character.TryGetComponent<RedPlayerManager>(out RedPlayerManager red))
+            else if (red != null)
             {
                 red.jumpAble = false;
-
             }
         }
     }
