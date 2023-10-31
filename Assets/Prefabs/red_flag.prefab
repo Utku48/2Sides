@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4246357147889929253}
   - component: {fileID: 4246357147889929252}
   - component: {fileID: 4246357147889929255}
-  - component: {fileID: 4246357147889929254}
+  - component: {fileID: 1685137169}
   m_Layer: 0
   m_Name: red_flag
   m_TagString: redF
@@ -26,9 +26,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4246357147889929257}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.1931534, y: 8.4279995, z: 0.77}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 1.5000002, y: 1.5000002, z: 1.5000002}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4251138964445482851}
@@ -85,8 +85,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &4246357147889929254
-CapsuleCollider:
+--- !u!65 &1685137169
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -95,10 +95,9 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.118965864
-  m_Height: 0.47918892
-  m_Direction: 1
-  m_Center: {x: -0.016541561, y: 0.23764479, z: -0.004255931}
+  serializedVersion: 2
+  m_Size: {x: 0.2679734, y: 0.47918892, z: 0.33320826}
+  m_Center: {x: 0.011808006, y: 0.23764479, z: 0.097088166}
 --- !u!1001 &4246357147099445655
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -109,6 +108,14 @@ PrefabInstance:
     - target: {fileID: 430082, guid: e6b0c8eedb7b4b148b2d830fdcf06603, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.158
+      objectReference: {fileID: 0}
+    - target: {fileID: 19831144, guid: e6b0c8eedb7b4b148b2d830fdcf06603, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19831144, guid: e6b0c8eedb7b4b148b2d830fdcf06603, type: 3}
+      propertyPath: moveWithTransform
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 19831144, guid: e6b0c8eedb7b4b148b2d830fdcf06603, type: 3}
       propertyPath: ColorModule.gradient.maxGradient.ctime0
@@ -133,6 +140,14 @@ PrefabInstance:
     - target: {fileID: 19831144, guid: e6b0c8eedb7b4b148b2d830fdcf06603, type: 3}
       propertyPath: ColorModule.gradient.maxGradient.key1.r
       value: 0.46323532
+      objectReference: {fileID: 0}
+    - target: {fileID: 19851844, guid: e6b0c8eedb7b4b148b2d830fdcf06603, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19851844, guid: e6b0c8eedb7b4b148b2d830fdcf06603, type: 3}
+      propertyPath: moveWithTransform
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 19851844, guid: e6b0c8eedb7b4b148b2d830fdcf06603, type: 3}
       propertyPath: ColorModule.gradient.maxGradient.atime1
@@ -237,6 +252,16 @@ PrefabInstance:
     - target: {fileID: 4788437107734260, guid: e6b0c8eedb7b4b148b2d830fdcf06603, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198535614377564514, guid: e6b0c8eedb7b4b148b2d830fdcf06603,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198535614377564514, guid: e6b0c8eedb7b4b148b2d830fdcf06603,
+        type: 3}
+      propertyPath: moveWithTransform
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 198535614377564514, guid: e6b0c8eedb7b4b148b2d830fdcf06603,
         type: 3}

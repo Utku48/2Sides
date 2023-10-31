@@ -22,6 +22,7 @@ public class JumpCheck : MonoBehaviour
             else if (red != null)
             {
                 red.jumpAble = true;
+
             }
         }
     }
@@ -33,7 +34,6 @@ public class JumpCheck : MonoBehaviour
         {
             if (Physics.Raycast(this.transform.position + transform.up, -transform.up, out hit, 2f, _groundLayer))
             {
-                Debug.Log(hit.collider.name);
                 return;
             }
 

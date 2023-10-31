@@ -1,9 +1,6 @@
-﻿using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
+﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+
 
 public class BluePlayerManager : MonoBehaviour
 {
@@ -14,13 +11,13 @@ public class BluePlayerManager : MonoBehaviour
     [SerializeField] private Animator _anim;
     [SerializeField] private Vector3 _blueSpawnPos;
     [SerializeField] private GameObject blueFlag;
-    [SerializeField] private Transform[] topDownBlueFlag;
+
     [SerializeField] private ParticleSystem[] _particiles;
 
     public static int b = 0;
 
     public static bool isMoving = false;
-    public float _gravityValue = 35f;
+    public float _gravityValue = 10f;
 
     public bool jumpAble;
     public static bool _blueReached;
@@ -32,13 +29,15 @@ public class BluePlayerManager : MonoBehaviour
         _anim = GetComponent<Animator>();
 
     }
+
     private void FixedUpdate()
     {
-        Vector3 gravityValue = new Vector3(-_gravityValue * _rb.mass, 0f, 0f);
-        _rb.AddForce(gravityValue);
+        Vector3 gravityValue = new Vector3(Physics.gravity.y, 0f, 0f);
+        _rb.AddForce(gravityValue, ForceMode.Acceleration);
 
         _rb.velocity = new Vector3(_rb.velocity.x, _moveY * _moveYspeed * Time.deltaTime, _rb.velocity.z);
 
+        Debug.Log(_blueReached);
     }
     #region UpDownMove
     public void UpMove()
@@ -75,18 +74,12 @@ public class BluePlayerManager : MonoBehaviour
             {
                 _particiles[2].Play();
             }
-            //if (_blueReached)
-            //{
-            //    blueFlag.transform.DOMove(topDownBlueFlag[0].position, 3f);
-            //}
+
         }
 
         if (other.tag == "dieLine")
         {
-            transform.position = _blueSpawnPos;
-            LevelManager.pastTime = 0;
-            _particiles[1].Play();
-            b = 0;
+            ReSpawnBlue();
         }
     }
     private void OnTriggerExit(Collider other)
@@ -95,11 +88,6 @@ public class BluePlayerManager : MonoBehaviour
         {
             _blueReached = false;
             LevelManager.pastTime = 0;
-
-            if (!_blueReached)
-            {
-                blueFlag.transform.DOMove(topDownBlueFlag[1].position, 3f);
-            }
 
         }
     }
@@ -126,6 +114,30 @@ public class BluePlayerManager : MonoBehaviour
             jumpAble = false;
         }
 
+    }
+    public void ReSpawnBlue()
+    {
+        transform.position = _blueSpawnPos;
+        LevelManager.pastTime = 0;
+        _particiles[1].Play();
+        b = 0;
+
+    }
+
+    public void Die()
+    {
+        LevelManager.Instance.gameObject.GetComponent<MonoBehaviour>().StartCoroutine(ReSpawnDelayBlue());
+    }
+    IEnumerator ReSpawnDelayBlue()
+    {
+        gameObject.SetActive(false);
+        ParticleSystem p = Instantiate(_particiles[3], _particiles[3].transform.position, transform.rotation);
+        p.gameObject.SetActive(true);
+        p.Play();
+        Destroy(p.gameObject, 1.5f);
+        yield return new WaitForSeconds(1f);
+        gameObject.SetActive(true);
+        ReSpawnBlue();
     }
 
 }

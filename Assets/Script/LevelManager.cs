@@ -4,8 +4,25 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
+    public static LevelManager Instance { get; private set; }
+
     private static int nextSceneIndex = 0; // Başlangıçta bir sonraki seviyenin index değeri
     public static float pastTime = 0;
+    private void Awake()
+    {
+        // If there is an instance, and it's not me, delete myself.
+
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
+
+
     public void Update()
     {
         if (RedPlayerManager._redReached && BluePlayerManager._blueReached)

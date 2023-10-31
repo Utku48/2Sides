@@ -1,5 +1,4 @@
-using DG.Tweening;
-using System.Data;
+using System.Collections;
 using UnityEngine;
 
 public class RedPlayerManager : MonoBehaviour
@@ -10,7 +9,7 @@ public class RedPlayerManager : MonoBehaviour
     [SerializeField] private float _jumpForce;
     [SerializeField] private Animator _anim;
     [SerializeField] private GameObject redFlag;
-    [SerializeField] private Transform[] topDownRedFlag;
+
     public ParticleSystem[] _particiles;
 
     public Vector3 _redSpawnPos;
@@ -75,20 +74,15 @@ public class RedPlayerManager : MonoBehaviour
             a++;
             if (a == 1)
             {
-                _particiles[1].Play();
+                _particiles[2].Play();
             }
 
 
         }
         if (other.tag == "dieLine")
         {
-            _particiles[2].Play();
-            transform.position = _redSpawnPos;
-            LevelManager.pastTime = 0;
-            a = 0;
+            ReSpawnRed();
         }
-
-
     }
 
 
@@ -98,11 +92,6 @@ public class RedPlayerManager : MonoBehaviour
         {
             _redReached = false;
             LevelManager.pastTime = 0;
-
-            if (!_redReached)
-            {
-                redFlag.transform.DOMove(topDownRedFlag[1].position, 3f);
-            }
         }
 
     }
@@ -127,4 +116,30 @@ public class RedPlayerManager : MonoBehaviour
 
     }
 
+
+    public void ReSpawnRed()
+    {
+        transform.position = _redSpawnPos;
+        LevelManager.pastTime = 0;
+        _particiles[1].Play();
+        a = 0;
+
+    }
+
+    public void Die()
+    {
+        LevelManager.Instance.gameObject.GetComponent<MonoBehaviour>().StartCoroutine(ReSpawnDelayRed());
+
+    }
+    IEnumerator ReSpawnDelayRed()
+    {
+        gameObject.SetActive(false);
+        ParticleSystem p = Instantiate(_particiles[3], _particiles[3].transform.position, transform.rotation);
+        p.gameObject.SetActive(true);
+        p.Play();
+        Destroy(p.gameObject, 1.5f);
+        yield return new WaitForSeconds(1f);
+        gameObject.SetActive(true);
+        ReSpawnRed();
+    }
 }
