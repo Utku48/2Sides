@@ -697,7 +697,7 @@ MonoBehaviour:
   - {fileID: 2615214198641316823}
   - {fileID: 750099762832419097}
   - {fileID: 0}
-  - {fileID: 2831612187453180624, guid: f6f5beaec6ddff74c944520058fd4df6, type: 3}
+  - {fileID: 6480415759129517503}
   _redSpawnPos: {x: 0, y: 0, z: 0}
   jumpAble: 0
 --- !u!136 &1786731622809966835
@@ -1364,6 +1364,12 @@ PrefabInstance:
 --- !u!4 &6480415759115462593 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2831612187472687278, guid: f6f5beaec6ddff74c944520058fd4df6,
+    type: 3}
+  m_PrefabInstance: {fileID: 9125673301112412015}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &6480415759129517503 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 2831612187453180624, guid: f6f5beaec6ddff74c944520058fd4df6,
     type: 3}
   m_PrefabInstance: {fileID: 9125673301112412015}
   m_PrefabAsset: {fileID: 0}

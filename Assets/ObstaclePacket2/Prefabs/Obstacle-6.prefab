@@ -85,7 +85,8 @@ SkinnedMeshRenderer:
   m_SkinnedMotionVectors: 1
   m_Mesh: {fileID: 4442483588711856781, guid: 3f45b233054e1184083639be574fc29f, type: 3}
   m_Bones: []
-  m_BlendShapeWeights: []
+  m_BlendShapeWeights:
+  - 0
   m_RootBone: {fileID: 0}
   m_AABB:
     m_Center: {x: 0, y: 0.9756746, z: 0}
@@ -148,6 +149,7 @@ GameObject:
   - component: {fileID: 4735430199149701685}
   - component: {fileID: 8575876099885894434}
   - component: {fileID: 5379945549527417895}
+  - component: {fileID: 6079896509120105090}
   m_Layer: 0
   m_Name: Obs-6-R
   m_TagString: Untagged
@@ -163,7 +165,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3466900856100973875}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.1658978, y: 0, z: 0}
+  m_LocalPosition: {x: 2.03, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -218,7 +220,11 @@ SkinnedMeshRenderer:
   m_SkinnedMotionVectors: 1
   m_Mesh: {fileID: -4699261209097722553, guid: 3f45b233054e1184083639be574fc29f, type: 3}
   m_Bones: []
-  m_BlendShapeWeights: []
+  m_BlendShapeWeights:
+  - 0
+  - 0
+  - 0
+  - 0
   m_RootBone: {fileID: 0}
   m_AABB:
     m_Center: {x: 1.3676617, y: 1.0216548, z: 0.0013342202}
@@ -237,6 +243,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.9672337, y: 2, z: 2}
   m_Center: {x: 1.3676617, y: 1.0216548, z: 0.0013342202}
+--- !u!114 &6079896509120105090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3466900856100973875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2b4e21ccc4d02249aa631a97e77ee79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hummerDust: {fileID: 0}
 --- !u!1 &4832426360213511627
 GameObject:
   m_ObjectHideFlags: 0
@@ -254,7 +273,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2672572307377177166
 Transform:
   m_ObjectHideFlags: 0
@@ -318,7 +337,11 @@ SkinnedMeshRenderer:
   m_SkinnedMotionVectors: 1
   m_Mesh: {fileID: 6592423368769169789, guid: 3f45b233054e1184083639be574fc29f, type: 3}
   m_Bones: []
-  m_BlendShapeWeights: []
+  m_BlendShapeWeights:
+  - 0
+  - 0
+  - 0
+  - 0
   m_RootBone: {fileID: 0}
   m_AABB:
     m_Center: {x: -1.3755615, y: 1.0266855, z: 0.001334101}

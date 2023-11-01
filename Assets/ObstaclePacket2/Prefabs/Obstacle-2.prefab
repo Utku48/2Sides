@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8861321065327503055}
   - component: {fileID: 8619625426712430132}
   - component: {fileID: 7058011900156301149}
+  - component: {fileID: 3446176356160598901}
   m_Layer: 0
   m_Name: Obs-2-A
   m_TagString: Untagged
@@ -32,7 +33,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8000805827640159551}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -53.9564, y: -179.99997, z: -5.0197406e-13}
 --- !u!137 &8619625426712430132
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -95,11 +96,24 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6361384234742705328}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.3753734, y: 4.663319, z: 2.7907224}
-  m_Center: {x: 0.00047723902, y: 2.0925114, z: -3.270211e-11}
+  m_Size: {x: 2.3753734, y: 4.6633186, z: 3.249988}
+  m_Center: {x: 0.0004771948, y: 2.0925112, z: 0.22963293}
+--- !u!114 &3446176356160598901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6361384234742705328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2b4e21ccc4d02249aa631a97e77ee79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hummerDust: {fileID: 0}
 --- !u!1 &7224690992634247045
 GameObject:
   m_ObjectHideFlags: 0
@@ -128,7 +142,7 @@ Transform:
   m_GameObject: {fileID: 7224690992634247045}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8861321065327503055}
@@ -217,7 +231,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7224690992634247045}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1.9109037, y: 1.3517851, z: 1.9334083}

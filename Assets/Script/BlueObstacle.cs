@@ -14,7 +14,7 @@ public class BlueObstacle : MonoBehaviour
 
     void FixedUpdate()
     {
-        Vector3 gravityValue = new Vector3(Physics.gravity.y/2, 0f, 0f);
+        Vector3 gravityValue = new Vector3(Physics.gravity.y / 2, 0f, 0f);
         _rb.AddForce(gravityValue, ForceMode.Acceleration);
 
     }
