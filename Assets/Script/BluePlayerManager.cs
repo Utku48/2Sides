@@ -7,14 +7,14 @@ public class BluePlayerManager : MonoBehaviour
     [SerializeField] private Rigidbody _rb;
     [SerializeField] private float _moveY;
     [SerializeField] private float _moveYspeed;
-    [SerializeField] private float _jumpForce;
+    [SerializeField] public float _jumpForce;
     [SerializeField] private Animator _anim;
     [SerializeField] private Vector3 _blueSpawnPos;
     [SerializeField] private GameObject blueFlag;
 
     [SerializeField] private ParticleSystem[] _particiles;
 
-    public static int b = 0;
+
 
     public static bool isMoving = false;
     public float _gravityValue = 10f;
@@ -22,12 +22,17 @@ public class BluePlayerManager : MonoBehaviour
     public bool jumpAble;
     public static bool _blueReached;
 
+    GameObject _emmisionParent;
+    Material material;
+
     void Start()
     {
         _blueSpawnPos = gameObject.transform.position;
         _rb = GetComponent<Rigidbody>();
         _anim = GetComponent<Animator>();
 
+        _emmisionParent = gameObject.transform.GetChild(1).gameObject;
+        material = _emmisionParent.GetComponent<Renderer>().material;
     }
 
     private void FixedUpdate()
@@ -46,6 +51,8 @@ public class BluePlayerManager : MonoBehaviour
         _moveY = 1;
         transform.rotation = Quaternion.Euler(-90, 180, 90);
         _anim.SetBool("isRun", true);
+
+        material.EnableKeyword("_EMISSION");
     }
     public void DownMove()
     {
@@ -53,6 +60,8 @@ public class BluePlayerManager : MonoBehaviour
         _moveY = -1;
         transform.rotation = Quaternion.Euler(90, 90, 0);
         _anim.SetBool("isRun", true);
+
+        material.EnableKeyword("_EMISSION");
     }
     public void Stop()
     {
@@ -60,6 +69,8 @@ public class BluePlayerManager : MonoBehaviour
         _moveY = 0;
         _anim.SetBool("isRun", false);
         _anim.SetBool("isIdle", true);
+
+        material.DisableKeyword("_EMISSION");
     }
     #endregion
 
@@ -69,12 +80,7 @@ public class BluePlayerManager : MonoBehaviour
         if (other.tag == "blueF")
         {
             _blueReached = true;
-            b++;
-            if (b == 1)
-            {
-                _particiles[2].Play();
-            }
-
+            other.GetComponent<BoxCollider>().size = new Vector3(1f, 1f, 1f);
         }
 
         if (other.tag == "dieLine")
@@ -120,7 +126,6 @@ public class BluePlayerManager : MonoBehaviour
         transform.position = _blueSpawnPos;
         LevelManager.pastTime = 0;
         _particiles[1].Play();
-        b = 0;
 
     }
 

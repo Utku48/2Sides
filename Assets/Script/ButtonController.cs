@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,6 +9,10 @@ public class ButtonController : MonoBehaviour
         SceneManager.LoadScene(currentScene.name);
     }
 
+    public void PlayButton()
+    {
+
+    }
 
 
 

@@ -1,19 +1,20 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class RedPlayerManager : MonoBehaviour
 {
     [SerializeField] private Rigidbody _rb;
     [SerializeField] private float _moveX;
     [SerializeField] private float _moveXspeed;
-    [SerializeField] private float _jumpForce;
+    [SerializeField] public float _jumpForce;
     [SerializeField] private Animator _anim;
     [SerializeField] private GameObject redFlag;
 
     public ParticleSystem[] _particiles;
 
     public Vector3 _redSpawnPos;
-    public static int a = 0;
 
     public static bool isMoving = false;
 
@@ -21,16 +22,21 @@ public class RedPlayerManager : MonoBehaviour
     public static bool _redReached;
     public bool jumpAble;
 
+    GameObject _emmisionParent;
+    Material material;
+
     void Start()
     {
         _redSpawnPos = gameObject.transform.position;
         _rb = GetComponent<Rigidbody>();
         _anim = GetComponent<Animator>();
+
+        _emmisionParent = gameObject.transform.GetChild(1).gameObject;
+        material = _emmisionParent.GetComponent<Renderer>().material;
     }
     private void FixedUpdate()
     {
         _rb.velocity = new Vector3(_moveX * _moveXspeed * Time.deltaTime, _rb.velocity.y, _rb.velocity.z);
-
     }
     #region Left Right Move
     public void LeftMove()
@@ -41,6 +47,8 @@ public class RedPlayerManager : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, 270, 0);
         _anim.SetBool("isRun", true);
         _anim.SetBool("isIdle", false);
+
+        material.EnableKeyword("_EMISSION");
 
     }
     public void RightMove()
@@ -53,6 +61,7 @@ public class RedPlayerManager : MonoBehaviour
         _anim.SetBool("isRun", true);
         _anim.SetBool("isIdle", false);
 
+        material.EnableKeyword("_EMISSION");
 
     }
     public void Stop()
@@ -62,6 +71,7 @@ public class RedPlayerManager : MonoBehaviour
         _anim.SetBool("isRun", false);
         _anim.SetBool("isIdle", true);
 
+        material.DisableKeyword("_EMISSION");
 
     }
     #endregion
@@ -71,12 +81,7 @@ public class RedPlayerManager : MonoBehaviour
         if (other.tag == "redF")
         {
             _redReached = true;
-            a++;
-            if (a == 1)
-            {
-                _particiles[2].Play();
-            }
-
+            other.GetComponent<BoxCollider>().size = new Vector3(1f, 1f, 1f);
 
         }
         if (other.tag == "dieLine")
@@ -122,7 +127,6 @@ public class RedPlayerManager : MonoBehaviour
         transform.position = _redSpawnPos;
         LevelManager.pastTime = 0;
         _particiles[1].Play();
-        a = 0;
 
     }
 

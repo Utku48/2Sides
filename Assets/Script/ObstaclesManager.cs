@@ -17,6 +17,10 @@ public class ObstaclesManager : MonoBehaviour
             _redP.Die();
         }
 
+        else if (other.gameObject.CompareTag("ground"))
+        {
+
+        }
     }
 
 

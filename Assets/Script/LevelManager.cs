@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -36,16 +37,28 @@ public class LevelManager : MonoBehaviour
                 nextSceneIndex++;
                 SceneManager.LoadScene(nextSceneIndex);
 
+                UnlockedNewLevel();
                 BluePlayerManager._blueReached = false;
                 RedPlayerManager._redReached = false;
                 pastTime = 0;
-                RedPlayerManager.a = 0;
-                BluePlayerManager.b = 0;
+
             }
 
         }
 
+
     }
+
+    void UnlockedNewLevel()
+    {
+        if (SceneManager.GetActiveScene().buildIndex >= PlayerPrefs.GetInt("ReachedIndex"))
+        {
+            PlayerPrefs.SetInt("ReachedIndex", SceneManager.GetActiveScene().buildIndex + 1);
+            PlayerPrefs.SetInt("UnlockedLevel", PlayerPrefs.GetInt("UnlockedLevel", 1) + 1);
+            PlayerPrefs.Save();
+        }
+    }
+
 }
 
 
