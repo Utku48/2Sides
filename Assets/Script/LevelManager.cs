@@ -7,10 +7,13 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance { get; private set; }
 
-    private static int nextSceneIndex = 0; // Başlangıçta bir sonraki seviyenin index değeri
+    private static int nextSceneIndex ; // Başlangıçta bir sonraki seviyenin index değeri
     public static float pastTime = 0;
     private void Awake()
     {
+        nextSceneIndex = SceneManager.GetActiveScene().buildIndex;
+
+
         // If there is an instance, and it's not me, delete myself.
 
         if (Instance != null && Instance != this)

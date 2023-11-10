@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 501204185302630158}
   - component: {fileID: 501204185302630155}
   m_Layer: 0
-  m_Name: JumpPad
+  m_Name: RedJumpPad
   m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 501204185302630156}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.492, y: 6.9059997, z: 0.962}
   m_LocalScale: {x: 0.5, y: 0.1, z: 0.5}
   m_ConstrainProportionsScale: 0
@@ -99,8 +99,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.6262528, y: 0.99380344, z: 0.85631704}
-  m_Center: {x: 0.077920616, y: -0.0030981377, z: 0.07184148}
+  m_Size: {x: 0.7312933, y: 1.4591005, z: 0.9760039}
+  m_Center: {x: 0.13044089, y: 0.22955045, z: 0.011998057}
 --- !u!114 &501204185302630155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,7 +142,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8866747474421237507}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0.05, y: -2.2361946, z: -0.24591804}
+  m_LocalPosition: {x: -0.04, y: -2.2361946, z: -0.24591804}
   m_LocalScale: {x: 2, y: 2, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []

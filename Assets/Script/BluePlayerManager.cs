@@ -81,6 +81,9 @@ public class BluePlayerManager : MonoBehaviour
         {
             _blueReached = true;
             other.GetComponent<BoxCollider>().size = new Vector3(1f, 1f, 1f);
+
+            Material _bFlagMaterial = other.GetComponent<Renderer>().material;
+            _bFlagMaterial.EnableKeyword("_EMISSION");
         }
 
         if (other.tag == "dieLine")
@@ -94,6 +97,9 @@ public class BluePlayerManager : MonoBehaviour
         {
             _blueReached = false;
             LevelManager.pastTime = 0;
+
+            Material _bFlagMaterial = other.GetComponent<Renderer>().material;
+            _bFlagMaterial.DisableKeyword("_EMISSION");
 
         }
     }

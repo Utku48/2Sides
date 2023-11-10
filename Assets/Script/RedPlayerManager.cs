@@ -1,7 +1,6 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Rendering;
+
 
 public class RedPlayerManager : MonoBehaviour
 {
@@ -83,6 +82,10 @@ public class RedPlayerManager : MonoBehaviour
             _redReached = true;
             other.GetComponent<BoxCollider>().size = new Vector3(1f, 1f, 1f);
 
+            Material _rFlagMat = other.GetComponent<Renderer>().material;
+            _rFlagMat.EnableKeyword("_EMISSION");
+
+
         }
         if (other.tag == "dieLine")
         {
@@ -97,6 +100,10 @@ public class RedPlayerManager : MonoBehaviour
         {
             _redReached = false;
             LevelManager.pastTime = 0;
+
+            Material _bFlagMaterial = other.GetComponent<Renderer>().material;
+            _bFlagMaterial.DisableKeyword("_EMISSION");
+
         }
 
     }
