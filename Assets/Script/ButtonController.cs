@@ -3,15 +3,18 @@ using UnityEngine.SceneManagement;
 
 public class ButtonController : MonoBehaviour
 {
+    [SerializeField] private GameObject[] _buttons;
+
+
     public void RestartScene()
     {
         Scene currentScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(currentScene.name);
     }
 
-    public void PlayButton()
+    private void Update()
     {
-
+      
     }
 
     public void QuitButton()

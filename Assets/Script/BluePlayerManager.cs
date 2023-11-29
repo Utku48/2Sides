@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using DG.Tweening;
+using System.Collections;
 using UnityEngine;
 
 
@@ -11,6 +12,9 @@ public class BluePlayerManager : MonoBehaviour
     [SerializeField] private Animator _anim;
     [SerializeField] private Vector3 _blueSpawnPos;
     [SerializeField] private GameObject blueFlag;
+    [SerializeField] private GameObject _uButton;
+    [SerializeField] private GameObject _dButton;
+
 
     [SerializeField] private ParticleSystem[] _particiles;
 
@@ -42,7 +46,7 @@ public class BluePlayerManager : MonoBehaviour
 
         _rb.velocity = new Vector3(_rb.velocity.x, _moveY * _moveYspeed * Time.deltaTime, _rb.velocity.z);
 
-        Debug.Log(_blueReached);
+
     }
     #region UpDownMove
     public void UpMove()
@@ -138,6 +142,8 @@ public class BluePlayerManager : MonoBehaviour
     public void Die()
     {
         LevelManager.Instance.gameObject.GetComponent<MonoBehaviour>().StartCoroutine(ReSpawnDelayBlue());
+        _uButton.transform.DOScale(Vector3.zero, .2f);
+        _dButton.transform.DOScale(Vector3.zero, .2f);
     }
     IEnumerator ReSpawnDelayBlue()
     {
@@ -149,6 +155,11 @@ public class BluePlayerManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         gameObject.SetActive(true);
         ReSpawnBlue();
+
+        _uButton.transform.DOScale(new Vector3(1.5f, 1.5f, 1.5f), .2f);
+        _dButton.transform.DOScale(new Vector3(1.5f, 1.5f, 1.5f), .2f);
+
+
     }
 
 }

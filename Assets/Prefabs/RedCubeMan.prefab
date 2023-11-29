@@ -693,6 +693,9 @@ MonoBehaviour:
   _jumpForce: 4
   _anim: {fileID: 3119221340742444987}
   redFlag: {fileID: 0}
+  _rlButton:
+  - {fileID: 0}
+  - {fileID: 0}
   _particiles:
   - {fileID: 2615214198641316823}
   - {fileID: 750099762832419097}

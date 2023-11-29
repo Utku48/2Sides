@@ -1,6 +1,8 @@
+using DG.Tweening;
 using System.Collections;
 using UnityEngine;
-
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class RedPlayerManager : MonoBehaviour
 {
@@ -10,6 +12,9 @@ public class RedPlayerManager : MonoBehaviour
     [SerializeField] public float _jumpForce;
     [SerializeField] private Animator _anim;
     [SerializeField] private GameObject redFlag;
+
+    [SerializeField] private GameObject rButton;
+    [SerializeField] private GameObject LButton;
 
     public ParticleSystem[] _particiles;
 
@@ -32,6 +37,9 @@ public class RedPlayerManager : MonoBehaviour
 
         _emmisionParent = gameObject.transform.GetChild(1).gameObject;
         material = _emmisionParent.GetComponent<Renderer>().material;
+
+
+
     }
     private void FixedUpdate()
     {
@@ -41,6 +49,7 @@ public class RedPlayerManager : MonoBehaviour
     public void LeftMove()
     {
 
+
         isMoving = true;
         _moveX = -1;
         transform.rotation = Quaternion.Euler(0, 270, 0);
@@ -49,10 +58,10 @@ public class RedPlayerManager : MonoBehaviour
 
         material.EnableKeyword("_EMISSION");
 
+
     }
     public void RightMove()
     {
-
         isMoving = true;
         _moveX = 1;
         transform.rotation = Quaternion.Euler(0, 90, 0);
@@ -90,6 +99,10 @@ public class RedPlayerManager : MonoBehaviour
         if (other.tag == "dieLine")
         {
             ReSpawnRed();
+
+
+
+
         }
     }
 
@@ -134,12 +147,14 @@ public class RedPlayerManager : MonoBehaviour
         transform.position = _redSpawnPos;
         LevelManager.pastTime = 0;
         _particiles[1].Play();
-
     }
 
     public void Die()
     {
         LevelManager.Instance.gameObject.GetComponent<MonoBehaviour>().StartCoroutine(ReSpawnDelayRed());
+
+        rButton.transform.DOScale(Vector3.zero, .2f);
+        LButton.transform.DOScale(Vector3.zero, .2f);
 
     }
     IEnumerator ReSpawnDelayRed()
@@ -152,5 +167,10 @@ public class RedPlayerManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         gameObject.SetActive(true);
         ReSpawnRed();
+
+        rButton.transform.DOScale(new Vector3(1.5f, 1.5f, 1.5f), .2f);
+        LButton.transform.DOScale(new Vector3(1.5f, 1.5f, 1.5f), .2f);
+
+
     }
 }

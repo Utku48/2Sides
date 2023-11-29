@@ -19429,7 +19429,7 @@ GameObject:
   - component: {fileID: 4835838518217071158}
   - component: {fileID: 4835838518217071159}
   - component: {fileID: 4835838518217071152}
-  - component: {fileID: 4835838518217071157}
+  - component: {fileID: 7632800613282891243}
   m_Layer: 0
   m_Name: BlueJumpPad
   m_TagString: ground
@@ -19518,7 +19518,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.8482464, y: 0.8282479, z: 0.93894947}
   m_Center: {x: -0.033076227, y: -0.085875966, z: 0.030525267}
---- !u!114 &4835838518217071157
+--- !u!114 &7632800613282891243
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -19527,11 +19527,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4835838518217071154}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed0707fdd9a628a4d8aed48ba65772bf, type: 3}
+  m_Script: {fileID: 11500000, guid: d2a957b3c68ad1b408585f71263a4a6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _anim: {fileID: 0}
-  jumpForce: 7.5
+  jumpForce: 10
   _flipParticule: {fileID: 4532302198336536782}
 --- !u!1 &8746104825482407747
 GameObject:

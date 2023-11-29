@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 501204185302630152}
   - component: {fileID: 501204185302630153}
   - component: {fileID: 501204185302630158}
-  - component: {fileID: 501204185302630155}
+  - component: {fileID: 6909179556835337787}
   m_Layer: 0
   m_Name: RedJumpPad
   m_TagString: ground
@@ -101,7 +101,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.7312933, y: 1.4591005, z: 0.9760039}
   m_Center: {x: 0.13044089, y: 0.22955045, z: 0.011998057}
---- !u!114 &501204185302630155
+--- !u!114 &6909179556835337787
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -114,7 +114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _anim: {fileID: 0}
-  jumpForce: 7.5
+  jumpForce: 8
   _flipParticule: {fileID: 8866747475378988528}
 --- !u!1 &8866747474421237507
 GameObject:
