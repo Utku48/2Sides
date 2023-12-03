@@ -10,10 +10,11 @@ public class JumpCheck : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("ground") || other.GetComponent<BluePlayerManager>() || other.GetComponent<RedPlayerManager>())
+        if (other.CompareTag("ground") || other.GetComponent<BluePlayerManager>() || other.GetComponent<RedPlayerManager>() || other.CompareTag("Obstacle"))
         {
             BluePlayerManager blue = _character.GetComponent<BluePlayerManager>();
             RedPlayerManager red = _character.GetComponent<RedPlayerManager>();
+
 
             if (blue != null)
             {
@@ -30,7 +31,7 @@ public class JumpCheck : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("ground") || other.GetComponent<BluePlayerManager>() || other.GetComponent<RedPlayerManager>())
+        if (other.CompareTag("ground") || other.GetComponent<BluePlayerManager>() || other.GetComponent<RedPlayerManager>() || other.CompareTag("Obstacle"))
         {
             if (Physics.Raycast(this.transform.position + transform.up, -transform.up, out hit, 2f, _groundLayer))
             {
@@ -39,6 +40,7 @@ public class JumpCheck : MonoBehaviour
 
             BluePlayerManager blue = _character.GetComponent<BluePlayerManager>();
             RedPlayerManager red = _character.GetComponent<RedPlayerManager>();
+
 
             if (blue != null)
             {

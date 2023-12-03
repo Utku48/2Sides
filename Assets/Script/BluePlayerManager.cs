@@ -1,5 +1,4 @@
-﻿using DG.Tweening;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
 
@@ -45,7 +44,11 @@ public class BluePlayerManager : MonoBehaviour
         _rb.AddForce(gravityValue, ForceMode.Acceleration);
 
         _rb.velocity = new Vector3(_rb.velocity.x, _moveY * _moveYspeed * Time.deltaTime, _rb.velocity.z);
+        if (Mathf.Abs(_rb.velocity.y) > 0.5f)
+        {
+            _anim.SetBool("isRun", true);
 
+        }
 
     }
     #region UpDownMove
@@ -54,7 +57,7 @@ public class BluePlayerManager : MonoBehaviour
         isMoving = true;
         _moveY = 1;
         transform.rotation = Quaternion.Euler(-90, 180, 90);
-        _anim.SetBool("isRun", true);
+
 
         material.EnableKeyword("_EMISSION");
     }
@@ -63,7 +66,8 @@ public class BluePlayerManager : MonoBehaviour
         isMoving = true;
         _moveY = -1;
         transform.rotation = Quaternion.Euler(90, 90, 0);
-        _anim.SetBool("isRun", true);
+
+
 
         material.EnableKeyword("_EMISSION");
     }
@@ -142,8 +146,7 @@ public class BluePlayerManager : MonoBehaviour
     public void Die()
     {
         LevelManager.Instance.gameObject.GetComponent<MonoBehaviour>().StartCoroutine(ReSpawnDelayBlue());
-        _uButton.transform.DOScale(Vector3.zero, .2f);
-        _dButton.transform.DOScale(Vector3.zero, .2f);
+
     }
     IEnumerator ReSpawnDelayBlue()
     {
@@ -156,8 +159,7 @@ public class BluePlayerManager : MonoBehaviour
         gameObject.SetActive(true);
         ReSpawnBlue();
 
-        _uButton.transform.DOScale(new Vector3(1.5f, 1.5f, 1.5f), .2f);
-        _dButton.transform.DOScale(new Vector3(1.5f, 1.5f, 1.5f), .2f);
+
 
 
     }

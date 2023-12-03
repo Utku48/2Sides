@@ -16,6 +16,12 @@ public class RedJumpPad : MonoBehaviour
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             _flipParticule.Play();
         }
+        else if (other.gameObject.CompareTag("Obstacle"))
+        {
+            _anim.SetBool("ObstacleFlip", true);
+            rb.AddForce(new Vector3(.5f, .75f, 0) * jumpForce, ForceMode.Impulse);
+            _flipParticule.Play();
+        }
 
     }
 

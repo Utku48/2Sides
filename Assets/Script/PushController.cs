@@ -8,6 +8,7 @@ public class PushController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("pushControl"))
         {
+            Debug.Log("pushMan");
             Animator animator = other.gameObject.transform.parent.gameObject.GetComponent<Animator>();
 
             if (animator != null && other.gameObject.transform.parent.gameObject.GetComponent<RedPlayerManager>())

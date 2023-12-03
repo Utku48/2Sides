@@ -1,5 +1,6 @@
 using DG.Tweening;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -12,9 +13,8 @@ public class RedPlayerManager : MonoBehaviour
     [SerializeField] public float _jumpForce;
     [SerializeField] private Animator _anim;
     [SerializeField] private GameObject redFlag;
+    [SerializeField] private GameObject _secretButton;
 
-    [SerializeField] private GameObject rButton;
-    [SerializeField] private GameObject LButton;
 
     public ParticleSystem[] _particiles;
 
@@ -39,21 +39,25 @@ public class RedPlayerManager : MonoBehaviour
         material = _emmisionParent.GetComponent<Renderer>().material;
 
 
-
     }
     private void FixedUpdate()
     {
         _rb.velocity = new Vector3(_moveX * _moveXspeed * Time.deltaTime, _rb.velocity.y, _rb.velocity.z);
+
+        if (Mathf.Abs(_rb.velocity.x) > .5f)
+        {
+            _anim.SetBool("isRun", true);
+
+        }
+
     }
     #region Left Right Move
+
     public void LeftMove()
     {
-
-
         isMoving = true;
         _moveX = -1;
         transform.rotation = Quaternion.Euler(0, 270, 0);
-        _anim.SetBool("isRun", true);
         _anim.SetBool("isIdle", false);
 
         material.EnableKeyword("_EMISSION");
@@ -66,20 +70,23 @@ public class RedPlayerManager : MonoBehaviour
         _moveX = 1;
         transform.rotation = Quaternion.Euler(0, 90, 0);
         transform.rotation = Quaternion.Euler(0, 90, 0);
-        _anim.SetBool("isRun", true);
+        //_anim.SetBool("isRun", true);
         _anim.SetBool("isIdle", false);
 
         material.EnableKeyword("_EMISSION");
 
+
     }
     public void Stop()
     {
+
         isMoving = false;
         _moveX = 0;
         _anim.SetBool("isRun", false);
         _anim.SetBool("isIdle", true);
 
         material.DisableKeyword("_EMISSION");
+
 
     }
     #endregion
@@ -98,12 +105,9 @@ public class RedPlayerManager : MonoBehaviour
         }
         if (other.tag == "dieLine")
         {
-            ReSpawnRed();
-
-
-
-
+            Die();
         }
+
     }
 
 
@@ -147,18 +151,18 @@ public class RedPlayerManager : MonoBehaviour
         transform.position = _redSpawnPos;
         LevelManager.pastTime = 0;
         _particiles[1].Play();
+
     }
 
     public void Die()
     {
         LevelManager.Instance.gameObject.GetComponent<MonoBehaviour>().StartCoroutine(ReSpawnDelayRed());
 
-        rButton.transform.DOScale(Vector3.zero, .2f);
-        LButton.transform.DOScale(Vector3.zero, .2f);
-
     }
     IEnumerator ReSpawnDelayRed()
     {
+
+
         gameObject.SetActive(false);
         ParticleSystem p = Instantiate(_particiles[3], _particiles[3].transform.position, transform.rotation);
         p.gameObject.SetActive(true);
@@ -168,8 +172,6 @@ public class RedPlayerManager : MonoBehaviour
         gameObject.SetActive(true);
         ReSpawnRed();
 
-        rButton.transform.DOScale(new Vector3(1.5f, 1.5f, 1.5f), .2f);
-        LButton.transform.DOScale(new Vector3(1.5f, 1.5f, 1.5f), .2f);
 
 
     }
