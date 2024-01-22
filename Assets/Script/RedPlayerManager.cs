@@ -141,6 +141,7 @@ public class RedPlayerManager : MonoBehaviour
             _anim.SetTrigger("Jump");
             _rb.velocity = new Vector3(_rb.velocity.x, _jumpForce, _rb.velocity.z);
             jumpAble = false;
+
         }
 
     }
