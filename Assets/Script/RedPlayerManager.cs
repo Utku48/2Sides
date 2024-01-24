@@ -50,12 +50,16 @@ public class RedPlayerManager : MonoBehaviour
 
         }
 
+
+        Debug.Log(isMoving);
+
     }
     #region Left Right Move
 
     public void LeftMove()
     {
         isMoving = true;
+
         _moveX = -1;
         transform.rotation = Quaternion.Euler(0, 270, 0);
         _anim.SetBool("isIdle", false);
@@ -66,12 +70,16 @@ public class RedPlayerManager : MonoBehaviour
     }
     public void RightMove()
     {
+
         isMoving = true;
         _moveX = 1;
         transform.rotation = Quaternion.Euler(0, 90, 0);
         transform.rotation = Quaternion.Euler(0, 90, 0);
         //_anim.SetBool("isRun", true);
         _anim.SetBool("isIdle", false);
+
+
+
 
         material.EnableKeyword("_EMISSION");
 
@@ -84,6 +92,9 @@ public class RedPlayerManager : MonoBehaviour
         _moveX = 0;
         _anim.SetBool("isRun", false);
         _anim.SetBool("isIdle", true);
+
+
+
 
         material.DisableKeyword("_EMISSION");
 
@@ -129,9 +140,18 @@ public class RedPlayerManager : MonoBehaviour
         if (other.gameObject.CompareTag("ground"))
         {
             _anim.SetBool("isIdle", true);
-        }
 
+            if (isMoving == true)
+            {
+                LevelManager.Instance._walkSoil.Play();
+            }
+            else
+            {
+                LevelManager.Instance._walkSoil.Stop();
+            }
+        }
     }
+
     #endregion
     public void Jump()
     {

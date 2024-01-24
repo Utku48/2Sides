@@ -7,8 +7,13 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance { get; private set; }
 
-    private static int nextSceneIndex ; // Başlangıçta bir sonraki seviyenin index değeri
+    private static int nextSceneIndex; // Başlangıçta bir sonraki seviyenin index değeri
     public static float pastTime = 0;
+       
+
+    [SerializeField] public AudioSource _walkSoil;
+
+
     private void Awake()
     {
         nextSceneIndex = SceneManager.GetActiveScene().buildIndex;
@@ -48,7 +53,6 @@ public class LevelManager : MonoBehaviour
             }
 
         }
-
 
     }
 

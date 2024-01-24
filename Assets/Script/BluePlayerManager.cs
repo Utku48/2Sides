@@ -43,6 +43,8 @@ public class BluePlayerManager : MonoBehaviour
         Vector3 gravityValue = new Vector3(Physics.gravity.y, 0f, 0f);
         _rb.AddForce(gravityValue, ForceMode.Acceleration);
 
+
+
         _rb.velocity = new Vector3(_rb.velocity.x, _moveY * _moveYspeed * Time.deltaTime, _rb.velocity.z);
         if (Mathf.Abs(_rb.velocity.y) > 0.5f)
         {
@@ -57,7 +59,6 @@ public class BluePlayerManager : MonoBehaviour
         isMoving = true;
         _moveY = 1;
         transform.rotation = Quaternion.Euler(-90, 180, 90);
-
 
         material.EnableKeyword("_EMISSION");
     }

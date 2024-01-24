@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7756489683812810087}
   - component: {fileID: 7756489683812810086}
   - component: {fileID: 7756489683812810085}
-  - component: {fileID: 1627867394478394445}
+  - component: {fileID: 44339135}
   m_Layer: 1
   m_Name: BlueObstacle
   m_TagString: ground
@@ -128,17 +128,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rb: {fileID: 0}
---- !u!136 &1627867394478394445
-CapsuleCollider:
+--- !u!65 &44339135
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7756489683812810084}
-  m_Material: {fileID: 13400000, guid: bf7bdbe3242b10045b045c6e7d72cba0, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.49994057
-  m_Height: 1.0377022
-  m_Direction: 1
-  m_Center: {x: 0.02882725, y: -0.010351956, z: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}

@@ -15,7 +15,7 @@ public class BrokenBrick : MonoBehaviour
         if (other.gameObject.GetComponent<RedPlayerManager>() || other.gameObject.GetComponent<BluePlayerManager>())
         {
             _shakeTile.SetBool("shake", true);
-
+           
             StartCoroutine(ExplodeTile());
 
         }
