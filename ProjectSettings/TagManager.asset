@@ -12,6 +12,7 @@ TagManager:
   - BlueMan
   - Obstacle
   - pushControl
+  - decreaseParticule
   layers:
   - Default
   - TransparentFX

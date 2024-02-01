@@ -700,6 +700,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 6480415759129517503}
   _redSpawnPos: {x: 0, y: 0, z: 0}
+  _redSpawnScale: {x: 0, y: 0, z: 0}
   jumpAble: 0
 --- !u!136 &1786731622809966835
 CapsuleCollider:

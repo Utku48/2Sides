@@ -9,7 +9,7 @@ public class RedPlayerManager : MonoBehaviour
 {
     [SerializeField] private Rigidbody _rb;
     [SerializeField] private float _moveX;
-    [SerializeField] private float _moveXspeed;
+    [SerializeField] public float _moveXspeed;
     [SerializeField] public float _jumpForce;
     [SerializeField] private Animator _anim;
     [SerializeField] private GameObject redFlag;
@@ -19,6 +19,7 @@ public class RedPlayerManager : MonoBehaviour
     public ParticleSystem[] _particiles;
 
     public Vector3 _redSpawnPos;
+    public Vector3 _redSpawnScale;
 
     public static bool isMoving = false;
 
@@ -32,6 +33,7 @@ public class RedPlayerManager : MonoBehaviour
     void Start()
     {
         _redSpawnPos = gameObject.transform.position;
+        _redSpawnScale = gameObject.transform.localScale;
         _rb = GetComponent<Rigidbody>();
         _anim = GetComponent<Animator>();
 
@@ -143,11 +145,11 @@ public class RedPlayerManager : MonoBehaviour
 
             if (isMoving == true)
             {
-                LevelManager.Instance._walkSoil.Play();
+                //LevelManager.Instance._walkSoil.Play();
             }
             else
             {
-                LevelManager.Instance._walkSoil.Stop();
+                //LevelManager.Instance._walkSoil.Stop();
             }
         }
     }
@@ -170,6 +172,8 @@ public class RedPlayerManager : MonoBehaviour
     public void ReSpawnRed()
     {
         transform.position = _redSpawnPos;
+        transform.localScale = _redSpawnScale;
+        _moveXspeed = 60;
         LevelManager.pastTime = 0;
         _particiles[1].Play();
 

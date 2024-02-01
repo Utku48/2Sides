@@ -6,7 +6,7 @@ public class BluePlayerManager : MonoBehaviour
 {
     [SerializeField] private Rigidbody _rb;
     [SerializeField] private float _moveY;
-    [SerializeField] private float _moveYspeed;
+    [SerializeField] public float _moveYspeed;
     [SerializeField] public float _jumpForce;
     [SerializeField] private Animator _anim;
     [SerializeField] private Vector3 _blueSpawnPos;

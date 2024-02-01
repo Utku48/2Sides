@@ -9,9 +9,9 @@ public class LevelManager : MonoBehaviour
 
     private static int nextSceneIndex; // Başlangıçta bir sonraki seviyenin index değeri
     public static float pastTime = 0;
-       
 
-    [SerializeField] public AudioSource _walkSoil;
+
+    //[SerializeField] public AudioSource _walkSoil;
 
 
     private void Awake()
